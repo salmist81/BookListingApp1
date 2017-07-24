@@ -4,10 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <!-- Text color for the details of the earthquake in the list item -->
-    <color name="textColorBookAuthors">#B4BAC0</color>
+    <!-- Text color for the book authors in the list item -->
+    <color name="textColorBookAuthors">#000000</color>
 
-    <!-- Text color for the primary location of the earthquake in the list item -->
-    <color name="textColorBookTitle">#2B3D4D</color>
+    <!-- Text color for the book title in the list item -->
+    <color name="textColorBookTitle">#B4BAC0</color>
 
 </resources>

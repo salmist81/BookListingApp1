@@ -11,14 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
-        android:dividerHeight="0dp"/>
+        android:dividerHeight="2dp"
+        android:layout_marginTop="2dp"/>
 
     <TextView
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:text=""/>
+        android:text="@string/no_books"/>
 
     <ProgressBar
         android:id="@+id/loading_spinner"

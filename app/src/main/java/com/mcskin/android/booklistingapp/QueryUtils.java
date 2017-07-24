@@ -25,7 +25,9 @@ import java.util.List;
  */
 public final class QueryUtils {
 
-    /** Tag for the log messages */
+    /**
+     * Tag for the log messages
+     */
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
     /**
@@ -55,9 +57,9 @@ public final class QueryUtils {
         }
 
         // Extract relevant fields from the JSON response and create a list of {@link Book}s
-        List<Book> books = extractFeatureFromJson(jsonResponse);
+        List<Book> books = extractItemsFromJson(jsonResponse);
 
-        // Return the list of {@link Earthquake}s
+        // Return the list of {@link Book}s
         return books;
     }
 
@@ -140,7 +142,7 @@ public final class QueryUtils {
      * Return a list of {@link Book} objects that has been built up from
      * parsing the given JSON response.
      */
-    private static List<Book> extractFeatureFromJson(String bookJSON) {
+    private static List<Book> extractItemsFromJson(String bookJSON) {
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(bookJSON)) {
             return null;
@@ -158,7 +160,7 @@ public final class QueryUtils {
             JSONObject baseJsonResponse = new JSONObject(bookJSON);
 
             // Extract the JSONArray associated with the key called "items",
-            // which represents a list of features (or books).
+            // which represents a list of items (or books).
             JSONArray bookArray = baseJsonResponse.getJSONArray("items");
 
             // For each book in the bookArray, create an {@link Book} object
@@ -185,17 +187,24 @@ public final class QueryUtils {
                 String publishedDate = volumeInfo.getString("publishedDate");
 
                 // Extract the JSONObject for the key called "imageLinks"
+                String smallThumbnail="";
+                if(volumeInfo.has("imageLinks")){
+                    JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
+                    if(imageLinks.has("smallThumbnails")){
+                        smallThumbnail = imageLinks.getString("smallThumbnails");
+                    }
+                }
                 JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
                 // Extract the value for the key called "smallThumbnail"
-                String smallThumbnail = imageLinks.getString("smallThumbnails");
+                //String smallThumbnail = imageLinks.getString("smallThumbnail");
 
 
                 // Extract the value for the key called "url"
                 String url = volumeInfo.getString("infoLink");
 
                 // Create a new {@link Book} object with the title, authors, publishedDate,
-                // smallThumbnail and url from the JSON response.
-                Book book = new Book(title, authors, publishedDate, smallThumbnail, url);
+                // url and smallThumbnail from the JSON response.
+                Book book = new Book(title, authors, publishedDate, url, smallThumbnail);
 
                 // Add the new {@link Book} to the list of books.
                 books.add(book);

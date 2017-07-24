@@ -23,7 +23,7 @@ public class BookActivity extends AppCompatActivity
 
     /** URL for earthquake data from the GOOGLE BOOK API data set */
     private static final String GOOGLE_BOOK_REQUEST_URL =
-            "https://www.googleapis.com/books/v1/volumes?maxResults=15&orderBy=newest&q=kids";
+            "https://www.googleapis.com/books/v1/volumes?q=kids";
 
 
     private static final int BOOK_LOADER_ID = 1;
@@ -65,7 +65,7 @@ public class BookActivity extends AppCompatActivity
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri bookUri = Uri.parse(currentBook.getUrl());
 
-                // Create a new intent to view the earthquake URI
+                // Create a new intent to view the book URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, bookUri);
 
                 // Send the intent to launch a new activity
@@ -98,13 +98,13 @@ public class BookActivity extends AppCompatActivity
         View loadingIndicator = findViewById(R.id.loading_spinner);
         loadingIndicator.setVisibility(View.GONE);
 
-        // Set empty state text to display "No earthquakes found."
+        // Set empty state text to display "No Books found."
         mEmptyStateTextView.setText(R.string.no_books);
 
-        // Clear the adapter of previous earthquake data
+        // Clear the adapter of previous book data
         mAdapter.clear();
 
-        // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
+        // If there is a valid list of {@link Book}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (books != null && !books.isEmpty()) {
             mAdapter.addAll(books);
