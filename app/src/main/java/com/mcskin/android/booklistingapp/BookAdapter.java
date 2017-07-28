@@ -16,6 +16,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import static com.mcskin.android.booklistingapp.R.id.authors;
+
 public class BookAdapter extends ArrayAdapter<Book> {
 
     /**
@@ -34,51 +36,63 @@ public class BookAdapter extends ArrayAdapter<Book> {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+        ViewHolder holder;
+        String image;
+
         // Check if there is an existing list item view (called convertView) that we can reuse,
         // otherwise, if convertView is null, then inflate a new list item layout.
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.book_list_item, parent, false);
+
+            holder = new ViewHolder();
+            holder.title = (TextView) listItemView.findViewById(R.id.title);
+            holder.authors = (TextView) listItemView.findViewById(authors);
+            holder.publishedDate = (TextView) listItemView.findViewById(R.id.publishedDate);
+            holder.smallThumbnail = (ImageView) listItemView.findViewById(R.id.smallThumbnail);
+
+            listItemView.setTag(holder);
+
+        } else {
+            // view already exists, get the holder instance from the view
+            holder = (ViewHolder) listItemView.getTag();
         }
 
         // Find the book at the given position in the list of books
         Book currentBook = getItem(position);
 
-        ViewHolder holder;
 
-        // Find the TextView with view ID title
-        TextView titleView = (TextView) listItemView.findViewById(R.id.title);
-        // Display the title of the current book in that TextView
-        titleView.setText(currentBook.getTitle());
+        // Set the title of the current book in that TextView
+        holder.title.setText(currentBook.getTitle());
 
-        // Find the TextView with view ID authors
-        TextView authorsView = (TextView) listItemView.findViewById(R.id.authors);
-        // Display the authors of the current book in that TextView
-        authorsView.setText(currentBook.getAuthors());
+        // Set the authors of the current book in that TextView
+        holder.authors.setText(currentBook.getAuthors());
 
-        // Create a new Date object from the date the book was published
-        //Date dateObject = new Date (currentBook.getPublishedDate());
-        holder = new ViewHolder();
-        // Find the TextView with view ID date
-        holder.publishedDateView = (TextView) listItemView.findViewById(R.id.publishedDate);
-        holder.publishedDateView.setText(currentBook.getPublishedDate());
+        // Set the date object from the date the book was published
+        holder.publishedDate.setText(currentBook.getPublishedDate());
 
-        // Find the TextView with view ID image
-        holder.smallThumbnailView = (ImageView) listItemView.findViewById(R.id.smallThumbnail);
 
-        // Display the image of the current book in that View
-        holder.smallThumbnailView.setTag(currentBook.getSmallThumbnail());
-
-        Picasso.with(getContext()).load(currentBook.getSmallThumbnail()).into(holder.smallThumbnailView);
+        // Set smallThumbnail of image if  available
+        image = currentBook.getSmallThumbnail();
+        if (image != null && image.length() > 0) {
+            Picasso.with(getContext()).load(currentBook.getSmallThumbnail()).into(holder.smallThumbnail);
+        } else {
+            //Set image from drawable
+            Picasso.with(getContext()).load(R.drawable.no_image).into(holder.smallThumbnail);
+        }
 
         return listItemView;
 
     }
 
-    static class ViewHolder {
-        private TextView publishedDateView;
-        private ImageView smallThumbnailView;
+    public static class ViewHolder {
+        private TextView title;
+        private TextView authors;
+        private TextView publishedDate;
+        private ImageView smallThumbnail;
+
     }
 
 }

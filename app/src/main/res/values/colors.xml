@@ -8,6 +8,13 @@
     <color name="textColorBookAuthors">#000000</color>
 
     <!-- Text color for the book title in the list item -->
-    <color name="textColorBookTitle">#B4BAC0</color>
+    <color name="textColorBookTitle">#ffffff</color>
+
+    <color name="background">#a5d2f7</color>
+
+    <!--<color name="colorText">#3F1106</color> -->
+
+    <color name="colorText">#000000</color>
+
 
 </resources>

@@ -1,8 +1,19 @@
 <resources>
     <string name="app_name">Book Listing App</string>
+    <string name="label_book">Book List</string>
+
+    <!-- user information -->
+    <string name="search_info">Enter either any category of book,full or partial book title to get a list of available books.</string>
+    <string name="hint_book_title">Enter Book Title (required)</string>
+    <string name="hint_book_author">Enter Book Author (optional)</string>
 
     <!-- Text to display in the list when there are no books [CHAR LIMIT=NONE] -->
     <string name="no_books">No Books found!</string>
+
+    <!-- Error message for user -->
+    <string name="empty_string_error">Please enter any category or book title</string>
+    <string name="invalid_string_error">Requires valid characters</string>
+
 
     <!-- Text to display in the list when there is no internet connection [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">No internet connection.</string>
@@ -11,25 +22,37 @@
     <string name="settings_menu_item">Settings</string>
 
     <!-- Settings Activity Title [CHAR LIMIT=NONE] -->
-    <string name="settings_title">Book Settings</string>
+    <string name="settings_title">Book List Settings</string>
 
-    <!-- Strings For Published  Date Preference [CHAR LIMIT=30] -->
-    <string name="settings_publishedDate_label">Published Date</string>
-    <string name="settings_publishedDate_key" translatable="false">Published Date</string>
-    <string name="settings_publishedDate_default" translatable="false">2017-05-13</string>
 
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
     <string name="settings_order_by_label">Order By</string>
     <string name="settings_order_by_key" translatable="false">order_by</string>
-    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_publishedDate_value</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_relevance_value</string>
 
-    <!-- Label for order-by published date option [CHAR LIMIT=20] -->
-    <string name="settings_order_by_publishedDate_label">Published Date</string>
-    <string name="settings_order_by_publishedDate_value" translatable="false">Published Date</string>
+    <!-- Label for order-by most relevant [CHAR LIMIT=20] -->
+    <string name="settings_order_by_relevance_label">Most Relevant</string>
+    <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
 
-    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
-    <string name="settings_order_by_most_recent_label">Most Recent</string>
-    <string name="settings_order_by_most_recent_value" translatable="false">time</string>
+    <!-- Strings For Maximum Results Preference [CHAR LIMIT=30] -->
+    <string name="settings_max_results_label">Max Results</string>
+    <string name="settings_max_results_key" translatable="false">max_results</string>
+    <string name="settings_max_results_default" translatable="false">@string/settings_max_results_15_value</string>
+
+    <string name="settings_limit_key" translatable="false">limit</string>
+    <string name="settings_limit_default" translatable="false">@string/settings_max_results_15_value</string>
+
+
+    <string name="settings_max_results_15_label">15</string>
+    <string name="settings_max_results_15_value" translatable="false">15</string>
+    <string name="settings_max_results_20_label">20</string>
+    <string name="settings_max_results_20_value" translatable="false">20</string>
+
+
+    <!-- Label for order-by Latest option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_latest_label">Newest</string>
+    <string name="settings_order_by_latest_value" translatable="false">newest</string>
+    <string name="label_button_search">Search  Books</string>
 
 
 
