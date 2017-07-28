@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mcskin.android.booklistingapp.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/search_info"
+            style="@style/TextInfo"
+            android:text="@string/search_info" />
+
+        <EditText
+            android:id="@+id/edit_book_title"
+            style="@style/EditText"
+            android:hint="@string/hint_book_title" />
+
+        <EditText
+            android:id="@+id/edit_book_author"
+            style="@style/EditText"
+            android:hint="@string/hint_book_author" />
+
+        <Button
+            android:id="@+id/button_search_books"
+            style="@style/Button"
+            android:text="@string/label_button_search" />
+    </LinearLayout>
+
+</ScrollView>
